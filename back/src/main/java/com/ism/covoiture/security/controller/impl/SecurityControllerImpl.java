@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SecurityControllerImpl implements SecurityController {
     private  final Service securityService;
+
     @Override
     public String login(@AuthenticationPrincipal UserDetails userDetails) {
         if (userDetails.getAuthorities().stream().anyMatch(role->role.getAuthority().compareTo("ADMIN")==0)){

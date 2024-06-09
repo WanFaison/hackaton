@@ -18,7 +18,6 @@ import lombok.RequiredArgsConstructor;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-    
     private final UserDetailsService service;
     private final PasswordEncoder passwordEncoder;
 
@@ -39,6 +38,7 @@ public class SecurityConfig {
                         .requestMatchers("/admin/**").hasAnyAuthority("ADMIN")
                         .requestMatchers("/conducteur/**").hasAnyAuthority("CONDUCTEUR")
                         .requestMatchers("/passager/**").hasAnyAuthority("PASSAGER")
+                        .requestMatchers("/api/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .build();
